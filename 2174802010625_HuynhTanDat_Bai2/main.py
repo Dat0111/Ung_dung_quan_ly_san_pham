@@ -118,7 +118,12 @@ class ProductApp:
 
         tk.Button(delete_frame, text="Xóa sản phẩm", command=self.delete_product).grid(row=1, column=0, columnspan=2, pady=5)
 
+        tk.Button(self.root, text="Đăng xuất", command=self.logout, bg="red", fg="white").pack(pady=10)
+
     def logout(self):
+        confirm = messagebox.askyesno("Xác nhận", "Bạn có chắc chắn muốn đăng xuất không?")
+        if not confirm:
+            return
         if self.conn:
             self.conn.close()
             self.conn = None
